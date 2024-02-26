@@ -39,8 +39,10 @@ class BankAccountTest {
         Assertions.assertThrows(NullPointerException.class, () -> account.transfer(10,null));
     }
     @Test
-    void transfer() {
-
+    void transferShouldDecresetheFirstAccountandIncreaseTheSecondAccount() {
+        account.transfer(10000,account2);
+        assertEquals(40000,account.getBalance());
+        assertEquals(10000,account2.getBalance());
     }
 
     @Test
