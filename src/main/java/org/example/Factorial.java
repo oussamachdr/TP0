@@ -1,8 +1,7 @@
 package org.example;
 
-public class Factoriel {
-    public class Factorial {
-        public static int factorial(int n) {
+public class Factorial {
+    public static int factorial(int n) {
             if (n < 0) {
                 throw new IllegalArgumentException("n must be positive");
             }
@@ -11,6 +10,5 @@ public class Factoriel {
                 result *= i;
             }
             return result;
-        }
     }
 }
