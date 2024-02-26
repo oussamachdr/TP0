@@ -46,10 +46,14 @@ class BankAccountTest {
     }
 
     @Test
-    void addInterest() {
+    void addInterestShouldReturnTheCorrectValue() {
+        account.addInterest();
+        assertEquals(50000*11,account.getBalance());
     }
 
     @Test
     void getBalance() {
+        account2.deposit(100);
+        assertEquals(100,account2.getBalance());
     }
 }
