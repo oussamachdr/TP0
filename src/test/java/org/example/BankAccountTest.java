@@ -6,10 +6,11 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class BankAccountTest {
-    private BankAccount account;
+    private BankAccount account,account2;
     @BeforeEach
     void setUp(){
         account = new BankAccount(50000,10);
+        account2 = new BankAccount(0,10);
     }
     @Test
     void depositShouldThrowException() {
@@ -20,13 +21,26 @@ class BankAccountTest {
         account.deposit(10000);
         Assertions.assertEquals(60000,account.getBalance());
     }
-
     @Test
-    void withdraw() {
+    void withdrawShouldThrowExceptionWhenAmmountlessthanZero() {
+        Assertions.assertThrows(IllegalArgumentException.class, () -> account.withdraw(-20));
     }
-
+    @Test
+    void withdrawShouldThrowExceptionWhenNoBalanceAvailable() {
+        Assertions.assertThrows(IllegalStateException.class, () -> account.withdraw(account.getBalance()+50));
+    }
+    @Test
+    void withdrawShouldDecreseBalance() {
+        account.withdraw(10000);
+        Assertions.assertEquals(40000,account.getBalance());
+    }
+    @Test
+    void transferShouldThrowException() {
+        Assertions.assertThrows(NullPointerException.class, () -> account.transfer(10,null));
+    }
     @Test
     void transfer() {
+
     }
 
     @Test
